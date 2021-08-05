@@ -30,9 +30,7 @@ class BetterCog(commands.Cog):
         self.error_msg = error_msg
         super().__init__(**kwargs)
 
-        self.logger = logging.getLogger(
-            f"bot.cogs.{self.__class__.__name__}"
-        )
+        self.logger = logging.getLogger(f"bot.cogs.{self.__class__.__name__}")
 
     def help_check(self, ctx: commands.Context) -> bool:
         """

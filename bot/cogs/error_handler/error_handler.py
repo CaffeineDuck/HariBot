@@ -10,9 +10,9 @@ import discord
 from discord.ext import commands
 
 from bot.utils.bettercog import BetterCog
-from .utils.error_to_embed import error_to_embed
 
 from ...core import Bot
+from .utils.error_to_embed import error_to_embed
 
 
 class ErrorHandler(BetterCog):
@@ -81,7 +81,7 @@ class ErrorHandler(BetterCog):
 
         # If we've reached here, the error wasn't expected
         # Report to logs
-        if self.bot.developement_environment:
+        if self.bot.config.dev_env:
             return traceback.print_exception(type(error), error, error.__traceback__)
 
         embed = discord.Embed(
@@ -144,6 +144,7 @@ class ErrorHandler(BetterCog):
             content="---------------\n\n**NEW ERROR**\n\n---------------",
             embeds=[*traceback_embeds, info_embed],
         )
+
 
 def setup(bot: Bot) -> None:
     bot.add_cog(ErrorHandler(bot))
