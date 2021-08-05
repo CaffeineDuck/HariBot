@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "boiler-bot"
+name = "hari-bot"
 version = "0.1.0"
 description = "A shitty discord bot for my discord server"
 authors = ["Samrid Pandit <samrid.pandit@gmail.com>"]
