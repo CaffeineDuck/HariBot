@@ -1,9 +1,8 @@
 """This is the core for `Bot`"""
 
 import asyncio
-import traceback
-from bot.utils.cog_manager import AutoReloader
 import logging
+import traceback
 from typing import Optional, Sequence
 
 import discord
@@ -12,6 +11,8 @@ from aiohttp import ClientSession
 from cachetools import TTLCache
 from discord.ext import commands
 from tortoise import Tortoise
+
+from bot.utils.cog_manager import AutoReloader
 
 from .help_command import HelpCommand
 from .helpers.config import BotConfig, LavalinkConfig
@@ -63,7 +64,6 @@ class Bot(commands.Bot):
 
         # Cogs
         self._load_cogs()
-            
 
     @property
     def event_loop(self) -> asyncio.BaseEventLoop:
@@ -134,7 +134,7 @@ class Bot(commands.Bot):
                 "port": lavalink_config.port,
                 "password": lavalink_config.password,
                 "identifier": lavalink_config.identifier,
-                "region": lavalink_config.region,
+                "region": lavalink_config.region.value,
                 "rest_uri": lavalink_config.rest_url,
             }
         }
@@ -163,7 +163,7 @@ class Bot(commands.Bot):
             for cog in self.config.cogs:
                 try:
                     self.load_extension(cog)
-                    self.logger.info(f'Loaded Cog: {cog}')
+                    self.logger.info(f"Loaded Cog: {cog}")
                 except commands.ExtensionError:
                     traceback.print_exc()
 
