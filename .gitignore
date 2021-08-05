@@ -1,0 +1,12 @@
+# Python stuffs
+__pycache__/
+
+# Environment Variables
+.env
+
+# Databse stuffs
+aerich.ini
+migrations/
+
+# Editor Stuffs
+.vscode
