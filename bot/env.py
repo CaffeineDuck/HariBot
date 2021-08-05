@@ -57,7 +57,4 @@ class BotLavalinkConfig(BaseSettings, LavalinkConfig):
 bot_config = BotConfig()
 
 db_config = BotDatabaseConfig()
-# lavalink_config = BotLavalinkConfig()
-
-# db_config = None
-lavalink_config = None
+lavalink_config = BotLavalinkConfig()
